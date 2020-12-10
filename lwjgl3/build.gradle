@@ -3,7 +3,8 @@ apply plugin: 'application'
 sourceSets.main.resources.srcDirs += [ rootProject.file('assets').path ]
 mainClassName = 'org.test.stuff.lwjgl3.Lwjgl3Launcher'
 eclipse.project.name = appName + '-lwjgl3'
-sourceCompatibility = 15.0
+//sourceCompatibility = 15.0
+sourceCompatibility = 8.0
 
 dependencies {
 	implementation project(':core')
@@ -20,7 +21,8 @@ run {
 	workingDir = rootProject.file('assets').path
 	setIgnoreExitValue(true)
 
-	setAllJvmArgs(List.of("-XX:+UnlockExperimentalVMOptions", "-XX:+UseZGC", "-Xlog:gc*"))
+//	use only for jdk 15+
+//	setAllJvmArgs(List.of("-XX:+UnlockExperimentalVMOptions", "-XX:+UseZGC", "-Xlog:gc*"))
 
 	if (OperatingSystem.current() == OperatingSystem.MAC_OS) {
 		// Required to run LWJGL3 Java apps on MacOS
